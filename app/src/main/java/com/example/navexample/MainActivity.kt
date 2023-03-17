@@ -42,10 +42,18 @@ class MainActivity : ComponentActivity() {
                         composable(Screen.Home.name) {
                             HomeScreen(navController = navController)
                         }
-                        composable(Screen.Greet.name) {
-                            GreetingScreen("Android",
-                                navController = navController
-                            )
+//                        composable(Screen.Greet.name) {
+//                            GreetingScreen("Android",
+//                                navController = navController
+//                            )
+                        composable("greet/world") {
+                            GreetingScreen(name = "World", navController = navController)
+                        }
+                        composable("greet/android") {
+                            GreetingScreen(name = "Android", navController = navController)
+                        }
+                        composable("greet/Friday") {
+                            GreetingScreen(name = "Friday", navController = navController)
                         }
                     }
                 }
@@ -69,8 +77,16 @@ fun GreetingScreen(name: String, navController: NavController, modifier: Modifie
 
 @Composable
 fun HomeScreen(navController: NavController, modifier: Modifier = Modifier) {
-    Button(onClick = { navController.navigate("greet") }) {
-        Text("Click Me")
+    Column() {
+        Button(onClick = { navController.navigate("greet/world") }) {
+            Text("World")
+        }
+        Button(onClick = { navController.navigate("greet/android") }) {
+            Text("Android")
+        }
+        Button(onClick = { navController.navigate("greet/friday") }) {
+            Text("Friday")
+        }
     }
 }
 
